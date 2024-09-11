@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: black; color:aliceblue">
+
+    <ul class="language">
+        <li>Java Script</li>
+    </ul>
+</body>
+<script>
+    //local way -> create li -> all tree traverse every time
+    function addLanguage(langName)
+    {
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage('python')
+    addLanguage('java')
+    
+    //optimize way ->  create li
+
+    function addOptimizeLanguage(langName)
+    {
+        const li = document.createElement('li')
+        // const addText = document.createTextNode(langName)
+        // li.appendChild(addText);
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptimizeLanguage("Node.js")
+
+    // -----------------------Edit li -----------------
+    //edit with local approch
+    // const secondLang = document.querySelector("li:nth-child(3)")
+    // console.log(secondLang)
+    // secondLang.innerHTML = "Mojo"
+
+    //Edit with Optimize way 
+    // const secondLang = document.querySelector("li:nth-child(3)")
+    // console.log(secondLang)
+    // const newli = document.createElement('li')
+    // newli.textContent = "PHP"
+    // secondLang.replaceWith(newli)
+
+    //Edit With OUTERHTML 
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li>TypeScript</li>'
+
+
+    // -----------------------Remove li
+    const lastLang = document.querySelector("li:last-child")
+    lastLang.remove()
+
+</script>
+</html>
